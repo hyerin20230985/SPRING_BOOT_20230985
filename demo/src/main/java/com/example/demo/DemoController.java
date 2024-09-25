@@ -12,7 +12,13 @@ public class DemoController {
         model.addAttribute("data", "반갑습니다."); //model 설정
         return "hello"; //hello.html 연결
     }
-    
-
-    
+    @GetMapping("/hello2")
+    public String hello2(Model model) {
+        model.addAttribute("data1", "홍길동님.");
+        return "hello2";
+    }
+    @GetMapping("/about_detailed")
+    public String about() {
+        return "about_detailed";
+    }
 }
