@@ -124,3 +124,14 @@
     
 })(jQuery);
 
+
+
+const closebutton = document.querySelector('.btn btn-primary py-3 px-5');
+
+closebutton.addEventListener('click',() => {
+    const userConfirmed = confirm("정말 이 창을 닫으시겠습니까?");
+
+    if (userConfirmed) {
+        window.close();
+    }
+});
