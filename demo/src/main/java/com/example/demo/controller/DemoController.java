@@ -19,12 +19,23 @@ public class DemoController {
     @GetMapping("/hello2")
     public String hello2(Model model) {
         model.addAttribute("data1", "홍길동님.");
+        model.addAttribute("dataa", "방갑습니다.");
+        model.addAttribute("datab", "오늘.");
+        model.addAttribute("datac", "날씨는.");
+        model.addAttribute("datad", "매우 좋습니다.");
         return "hello2";
     }
+
     @GetMapping("/about_detailed")
     public String about(Model model) {
         return "about_detailed";
     }
+
+    @GetMapping("/index_copy")
+    public String index(Model model) {
+        return "index copy";
+    }
+
     @GetMapping("/test1")
     public String thymeleaf_test1(Model model) {
         model.addAttribute("data11", "<h2> 방갑습니다 </h2>");
