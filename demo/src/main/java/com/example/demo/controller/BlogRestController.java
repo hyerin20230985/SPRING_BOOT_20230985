@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.domain.Article;
+//import com.example.demo.model.domain.Article;
+import com.example.demo.model.domain.Board;
 import com.example.demo.model.service.AddArticleRequest;
 import com.example.demo.model.service.BlogService;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,8 @@ public class BlogRestController{
     private final BlogService blogService;
 
     @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(@ModelAttribute AddArticleRequest request) {
-        Article saveArticle= blogService.save(request);
+    public ResponseEntity<Board> addArticle(@ModelAttribute AddArticleRequest request) {
+        Board saveArticle= blogService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(saveArticle);
     }
