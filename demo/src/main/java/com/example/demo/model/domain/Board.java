@@ -1,12 +1,15 @@
 package com.example.demo.model.domain;
 
 import lombok.*; // 어노테이션 자동 생성
+
 import jakarta.persistence.*; // 기존 javax 후속 버전
+import lombok.Builder;
 
 @Getter // setter는 없음(무분별한 변경 x)
 @Entity // 아래 객체와 DB 테이블을 매핑. JPA가 관리
 @Table(name = "board") // 테이블 이름을 지정. 없는 경우 클래스이름으로 설정
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // 외부 생성자 접근 방지
+
 
 public class Board {
     @Id // 기본 키
@@ -25,8 +28,15 @@ public class Board {
     private String count = "";
     @Column(name = "likec", nullable = false)
     private String likec = "";
-   
-    public record Article(String title, String content) {
+    
+    @Builder 
+    public Board (String title, String content, String user, String newdate, String count, String likec) {
+        this.title = title;
+        this.content = content;
+        this.user = user;
+        this.newdate = newdate;
+        this.count = count;
+        this.likec = likec;
     }
     
     public void update(String title, String content, String user, String newdate, String count, String likec) { // 현재 객체 상태 업데이트
@@ -37,4 +47,5 @@ public class Board {
         this.count = count;
         this.likec = likec;
     }
+
 }
