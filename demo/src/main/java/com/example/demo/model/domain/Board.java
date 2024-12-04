@@ -1,7 +1,6 @@
 package com.example.demo.model.domain;
 
 import lombok.*; // 어노테이션 자동 생성
-
 import jakarta.persistence.*; // 기존 javax 후속 버전
 import lombok.Builder;
 
