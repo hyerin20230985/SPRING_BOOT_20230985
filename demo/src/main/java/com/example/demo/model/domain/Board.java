@@ -2,7 +2,6 @@ package com.example.demo.model.domain;
 
 import lombok.*; // 어노테이션 자동 생성
 import jakarta.persistence.*; // 기존 javax 후속 버전
-import lombok.Builder;
 
 @Getter // setter는 없음(무분별한 변경 x)
 @Entity // 아래 객체와 DB 테이블을 매핑. JPA가 관리
@@ -19,17 +18,18 @@ public class Board {
     private String title = "";
     @Column(name = "content", nullable = false)
     private String content = "";
-    @Column(name = "user", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY) // 게시글과 사용자 간의 ManyToOne 관계
+    @JoinColumn(name = "name", nullable = false) //user_name과 관계 설정
     private String user = "";
     @Column(name = "newdate", nullable = false)
     private String newdate = "";
     @Column(name = "count", nullable = false)
-    private String count = "";
+    private Integer count = 0;
     @Column(name = "likec", nullable = false)
-    private String likec = "";
+    private Integer likec = 0;
     
     @Builder 
-    public Board (String title, String content, String user, String newdate, String count, String likec) {
+    public Board (String title, String content, String user, String newdate, Integer count, Integer likec) {
         this.title = title;
         this.content = content;
         this.user = user;
@@ -38,7 +38,7 @@ public class Board {
         this.likec = likec;
     }
     
-    public void update(String title, String content, String user, String newdate, String count, String likec) { // 현재 객체 상태 업데이트
+    public void update(String title, String content, String user, String newdate, Integer count, Integer likec) { // 현재 객체 상태 업데이트
         this.title = title;
         this.content = content;
         this.user = user;
